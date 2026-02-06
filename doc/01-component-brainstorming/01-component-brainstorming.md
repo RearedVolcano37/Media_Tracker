@@ -222,7 +222,7 @@ will likely refine your design to make your implementation easier to use.
       - Yes, It would make sense to define valid constants or enums for the media types (Manga, Manhua, Webtoons, Anime) and valid statuses (Planning, In_Progress, Completed, Dropped).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - Yes, markCompleted(title) can be implemented by calling setStatus(title, "Completed"). Also, containsSeries(title) could be implemented by checking stored entries through kernel operations.
+      - Yes, markCompleted(title) can be implemented by calling setStatus(title, "Completed") and containsSeries(title) could be implemented by checking stored entries through kernel operations.
 
 - Component Design #2: Playlist
   - **Description**:
@@ -234,37 +234,37 @@ will likely refine your design to make your implementation easier to use.
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes,playlists are designed to change over time by adding, removing, or rearranging songs.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, songs can be represented as String values.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - No, there are no required constant values needed for the basic design.
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, moveSongToFront(songTitle) could be implemented by finding the song’s index using repeated removeFrontSong() calls, then reinserting it at the front using addSong() and swaps.
 
-- Component Design #3: <!-- TODO: give component a name then delete this comment -->
+- Component Design #3: Game Library
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to model a personal video game library that tracks games a user owns or wants to play. Each game entry stores information such as the game title, platform (PC, PlayStation, Xbox, Switch, etc.), and completion status (Not Started, Playing, Completed). The kernel focuses on storing and updating game entries, while the secondary interface provides useful features such as filtering by platform, listing completed games, and generating summaries.(Inspiured by Steam)
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addGame(String title, String platform), void removeGame(String title), void setStatus(String title, String status), String getStatus(String title), int size()
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - boolean containsGame(String title), String getPlatform(String title), void markCompleted(String title), int countByPlatform(String platform), int countByStatus(String status), String generateLibraryReport(), boolean isEmpty()
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, a game library changes over time as new games are added, old ones are removed, and statuses are updated.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it would likely rely on an internal GameEntry class to store fields such as title, platform, and status.
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, it would make sense to define constants or enums for valid platforms and valid statuses (Not_Started, Playing, Completed, Dropped).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes. For example, markCompleted(title) can be implemented using setStatus(title, "Completed"). Also, countByPlatform(platform) can be implemented by scanning through stored game entries and checking each game’s platform.
 
 ## Post-Assignment
 
@@ -273,7 +273,6 @@ completed the assignment.
 
 ### Changelog
 
-<!-- TODO: create CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
@@ -312,7 +311,6 @@ of development.
 
 ### Submission
 
-<!-- TODO: read the submission instructions then delete this comment -->
 
 If you have completed the assignment using this template, we recommend that
 you convert it to a PDF before submission. If you're not sure how, check out
