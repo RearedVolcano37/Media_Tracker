@@ -1,12 +1,12 @@
 # Portfolio Part 1: Component Brainstorming
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) then delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) then delete this comment -->
-- **Due Date**: <!-- TODO: fill with due date and time (e.g., 10/17 @ 3:10 PM EST) then delete this comment -->
+- **Name**: Srijan Puli
+- **Dot Number**: Puli.1
+- **Due Date**: 2/6/26
 
 ## Assignment Overview
 
-<!-- TODO: read the assignment overview then delete this comment -->
+
 
 The overall goal of the portfolio project is to have you design and implement
 your own OSU component. There are no limits to what you choose to design and
@@ -29,7 +29,6 @@ implement.
 
 ## Assignment Checklist
 
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -52,7 +51,7 @@ to the tree diagram (you may remove this one as well):
 
 ## Assignment Learning Objectives
 
-<!-- TODO: read the assignment learning objectives then delete this comment -->
+
 
 Without learning objectives, there really is no clear reason why a particular
 assessment or activity exists. Therefore, to be completely transparent, here is
@@ -67,7 +66,6 @@ project. Specifically, students should be able to:
 
 ## Assignment Rubric: 10 Points
 
-<!-- TODO: read the assignment rubric then delete this comment -->
 
 Again, to be completely transparent, most of the portfolio project, except the
 final submission, is designed as a formative assessment. Formative assessments
@@ -106,15 +104,11 @@ Below is further rationale/explanation for the rubric items above:
 > brainstorming. Plus it helps us get to know you better! Feel free to share
 > images in this section.
 
-<!-- TODO: briefly talk about your interests then delete this comment.
-Also, protip: you can preview what your response looks like by hitting
-the magnifying glass icon in the upper-right corner or pressing CTRL+K and
-then V. This kind of button combination is called a chord, for whatever
-reason -->
+I am interested in software engineering and building programs that are both useful and enjoyable to interact with. Outside of school, some of my biggest hobbies are listening to music, playing video games, and reading manga. I enjoy following different series and keeping track of what I’m currently reading or watching, all though it can be a pain sometimes because I follow a LOT of different stories at the same time. I also like exploring new genres and discovering new stories through manga, manhua, webtoons, and anime.
+
 
 ## Assignment
 
-<!-- TODO: read the assignment section then delete this comment -->
 
 As previously stated, you are tasked with brainstorming 3 possible components.
 To aid you in this process, we have provided [some example components][example-components]
@@ -122,7 +116,6 @@ that may help you in your brainstorming. All of these components were made at
 some point by one of your peers, so you should feel confident that you can
 accomplish any of them.
 
-<!-- TODO: browse the list of possible projects then delete this comment -->
 
 There is no requirement that you use any of the components listed above.
 If you want to model something else, go for it! Very common early object
@@ -143,7 +136,6 @@ about different ways you might allow a client to manipulate your component.
 
 ### Example Component
 
-<!-- TODO: review this example component then delete this comment -->
 
 To help you brainstorm a few components, we've provided an example below of a
 component you already know well: NaturalNumber. We highly recommend that you
@@ -211,34 +203,34 @@ will likely refine your design to make your implementation easier to use.
 
 > Please use this section to share your designs.
 
-- Component Design #1: <!-- TODO: give component a name then delete this comment -->
+- Component Design #1: Media Tracker
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to model a tracker for media like manga, manhua, webtoons, and anime. The tracker allows a user to store series they are currently reading/watching, track progress (chapters/episodes), and update statuses such as "In Progress", "Completed", or "Dropped". The kernel focuses on basic storage and update operations, while the secondary interface provides more advanced features such as filtering, counting, and generating summaries.(Inspired by websites like myAnimeList and AniList)
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    - void addSeries(String title, String type), void removeSeries(String title), void updateProgress(String title, int progress), void setStatus(String title, String status), int size()
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - boolean containsSeries(String title), int getProgress(String title), String getStatus(String title), String getSeriesType(String title), void markCompleted(String title), int countByStatus(String status), int countByType(String type), String generateSummaryReport()
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, Users constantly add series, remove series, and update progress.
     - Would this component rely on any internal classes (e.g., `Map.Pair`)?
       Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, It would likely use an internal class such as SeriesEntry containing fields like title, type, progress, and status
     - Would this component need any enums or constants (e.g.,
       `Program.Instruction`)? Answer and explain:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, It would make sense to define valid constants or enums for the media types (Manga, Manhua, Webtoons, Anime) and valid statuses (Planning, In_Progress, Completed, Dropped).
     - Can you implement your secondary methods using your kernel methods?
       Answer, explain, and give at least one example:
-      - <!-- TODO: provide an argument then delete this comment -->
+      - Yes, markCompleted(title) can be implemented by calling setStatus(title, "Completed"). Also, containsSeries(title) could be implemented by checking stored entries through kernel operations.
 
-- Component Design #2: <!-- TODO: give component a name then delete this comment -->
+- Component Design #2: Playlist
   - **Description**:
-    - <!-- TODO: describe your component then delete this comment -->
+    - The purpose of this component is to model a music playlist that stores songs in an ordered sequence. The playlist allows the user to add songs, remove songs, and rearrange songs. The kernel provides minimal operations for inserting and removing songs, while the secondary interface provides convenience methods such as searching, shuffling, and moving songs.(Based off Spotify and other similar platforms)
   - **Kernel Methods**:
-    - <!-- TODO: list kernel methods then delete this comment -->
+    void addSong(String songTitle), String removeSong(int position), String removeFrontSong(), void swapSongs(int pos1, int pos2), int length()
   - **Secondary Methods**:
-    - <!-- TODO: list secondary methods then delete this comment -->
+    - boolean containsSong(String songTitle), int indexOf(String songTitle), String getSong(int position), void moveSongToFront(String songTitle), void shuffle(), boolean isEmpty()
   - **Additional Considerations** (*note*: "I don't know" is an acceptable
     answer for each of the following questions):
     - Would this component be mutable? Answer and explain:
