@@ -12,7 +12,7 @@ public class MediaTrackerMVP {
     /* -------------------- Enums -------------------- */
 
     public enum MediaType {
-        MANGA, MANHUA, WEBTOON, ANIME
+        MANGA, MANHUA, WEBTOON, ANIME, LIGHTNOVEL
     }
 
     public enum Status {
@@ -110,10 +110,10 @@ public class MediaTrackerMVP {
         StringBuilder report = new StringBuilder();
         report.append("===== MEDIA TRACKER REPORT =====\n");
         report.append("Total Series: ").append(this.size()).append("\n");
-        report.append("Completed: ").append(this.countByStatus(Status.COMPLETED))
-                .append("\n");
-        report.append("In Progress: ").append(this.countByStatus(Status.IN_PROGRESS))
-                .append("\n");
+        report.append("Completed: ")
+                .append(this.countByStatus(Status.COMPLETED)).append("\n");
+        report.append("In Progress: ")
+                .append(this.countByStatus(Status.IN_PROGRESS)).append("\n");
         report.append("Planning: ").append(this.countByStatus(Status.PLANNING))
                 .append("\n");
         report.append("Dropped: ").append(this.countByStatus(Status.DROPPED))
@@ -132,6 +132,7 @@ public class MediaTrackerMVP {
         tracker.addSeries("Solo Leveling", MediaType.MANHUA);
         tracker.addSeries("Tower of God", MediaType.WEBTOON);
         tracker.addSeries("Attack on Titan", MediaType.ANIME);
+        tracker.addSeries("Shadow Slave", MediaType.LIGHTNOVEL);
 
         // Updating progress
         tracker.updateProgress("One Piece", 1100);
