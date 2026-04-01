@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.04.01
+
+### Added
+
+- Implemented `MediaTrackerSecondary` abstract class in `src/components/mediatracker`
+- Added `MediaTrackerKernel`, `MediaTracker`, and `MediaTracker1L` to complete component stack
+- Implemented secondary methods (`containsSeries`, `markCompleted`, `countByStatus`, `countByType`, `generateSummaryReport`) and common methods (`toString`, `equals`, `hashCode`)
+
 ## 2026.02.06
 
 ### Added
