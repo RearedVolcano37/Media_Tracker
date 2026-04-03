@@ -1,8 +1,8 @@
 # Portfolio Part 5: Kernel Implementation
 
-- **Name**: <!-- TODO: fill with first and last name (e.g., Brutus Buckeye) and delete this comment -->
-- **Dot Number**: <!-- TODO: fill with OSU dot number (e.g., buckeye.17) and delete this comment -->
-- **Due Date**: <!-- TODO: fill out with due date and time (e.g., 10/17 @ 3:10 PM EST) and delete this comment -->
+- **Name**: Srijan Puli
+- **Dot Number**: puli.1
+- **Due Date**: 4/15/26
 
 ## Assignment Overview
 
@@ -39,8 +39,6 @@ of the file. Feel free to reference any of your kernel implementations for
 examples of these.
 
 ## Assignment Checklist
-
-<!-- TODO: browse the checklist then delete this comment -->
 
 To be sure you have completed everything on this assignment, we have littered
 this document with TODO comments. You can browse all of them in VSCode by
@@ -120,7 +118,7 @@ Below is further rationale/explanation for the rubric items above:
 > discuss how that representation will be restricted (i.e., by convention)
 > and interpreted (i.e., by correspondence).
 
-<!-- TODO: select a representation and explain why -->
+For my media tracker component, I decided to represent it using a `Map<String, MediaItem>`, where the key is something unique like the title or an ID, and the value stores all the information about that media item (like type, status, rating, etc.). I chose this because it makes it really fast and easy to find, add, or update items without having to loop through everything. By convention, every key has to be unique and not null, and each `MediaItem` should always have valid data so the tracker doesn’t break. In terms of correspondence, the whole map represents my media collection, and each key-value pair represents one specific item and its current state. I’ll also restrict it so there are no duplicate entries and all data stays consistent, which helps make sure the tracker always accurately reflects what the user is tracking.
 
 > To start making your kernel implementation, make a branch off of main in your
 > new repo called something like `kernel-implementation`. There are many ways to
@@ -142,8 +140,6 @@ Below is further rationale/explanation for the rubric items above:
 > rebase strategies described [here](https://stackoverflow.com/questions/35790561/working-while-waiting-for-pending-pr)
 > and [here](https://stackoverflow.com/questions/18021888/continue-working-on-a-git-branch-after-making-a-pull-request).
 
-<!-- TODO: make a new branch from main then delete this comment -->
-
 ## Assignment Tasks
 
 Your primary task for this assignment is to create a kernel implementation that
@@ -162,8 +158,6 @@ The following sections detail everything that you should do once you've
 completed the assignment.
 
 ### Changelog
-
-<!-- TODO: update CHANGELOG then delete this comment -->
 
 At the end of every assignment, you should update the
 [CHANGELOG.md](../../CHANGELOG.md) file found in the root of the project folder.
