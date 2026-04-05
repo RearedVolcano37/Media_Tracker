@@ -4,23 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Kernel implementation of {@code MediaTracker}.
+ * Kernel implementation using list-backed representation.
+ *
+ * Convention: - entries is non-null - each SeriesEntry.title and
+ * SeriesEntry.type are non-null, non-empty - each SeriesEntry.progress >= 0 -
+ * each SeriesEntry.status is non-null, non-empty - titles are unique
+ *
+ * Correspondence: - this <-> sequence of entries with order preserved - index i
+ * corresponds to entries.get(i)
  */
 public class MediaTracker1L extends MediaTrackerSecondary {
-
-    private static class SeriesEntry {
-        final String title;
-        final String type;
-        int progress;
-        String status;
-
-        SeriesEntry(String title, String type) {
-            this.title = title;
-            this.type = type;
-            this.progress = 0;
-            this.status = "Planning";
-        }
-    }
 
     private final List<SeriesEntry> entries;
 
@@ -44,7 +37,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
             throw new IllegalArgumentException("type cannot be null or empty");
         }
         if (this.indexOf(title) >= 0) {
-            throw new IllegalStateException("series already exists: " + title);
+            throw new IllegalStateException("Series already exists: " + title);
         }
         this.entries.add(new SeriesEntry(title, type));
     }
@@ -53,7 +46,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
     public void removeSeries(String title) {
         int index = this.indexOf(title);
         if (index < 0) {
-            throw new IllegalArgumentException("series not found: " + title);
+            throw new IllegalArgumentException("No such series: " + title);
         }
         this.entries.remove(index);
     }
@@ -65,7 +58,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
         }
         int index = this.indexOf(title);
         if (index < 0) {
-            throw new IllegalArgumentException("series not found: " + title);
+            throw new IllegalArgumentException("No such series: " + title);
         }
         this.entries.get(index).progress = progress;
     }
@@ -78,7 +71,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
         }
         int index = this.indexOf(title);
         if (index < 0) {
-            throw new IllegalArgumentException("series not found: " + title);
+            throw new IllegalArgumentException("No such series: " + title);
         }
         this.entries.get(index).status = status;
     }
@@ -153,4 +146,17 @@ public class MediaTracker1L extends MediaTrackerSecondary {
         return new MediaTracker1L();
     }
 
+    private static final class SeriesEntry {
+        final String title;
+        final String type;
+        int progress;
+        String status;
+
+        SeriesEntry(String title, String type) {
+            this.title = title;
+            this.type = type;
+            this.progress = 0;
+            this.status = "Planning";
+        }
+    }
 }

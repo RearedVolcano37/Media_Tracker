@@ -1,7 +1,7 @@
 package components.mediatracker;
 
 /**
- * Enhanced interface for {@code MediaTracker} operations.
+ * Enhanced interface for MediaTracker.
  */
 public interface MediaTracker extends MediaTrackerKernel {
 
@@ -20,5 +20,4 @@ public interface MediaTracker extends MediaTrackerKernel {
     int countByType(String type);
 
     String generateSummaryReport();
-
 }

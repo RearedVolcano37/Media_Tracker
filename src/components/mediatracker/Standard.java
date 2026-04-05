@@ -1,32 +1,36 @@
 package components.mediatracker;
 
 /**
- * A minimal OSU-style standard interface for component types.
+ * OSU Standard interface used by kernel implementations.
  *
  * @param <T>
- *            the component type
+ *             component type
  */
 public interface Standard<T> {
 
-    /**
-     * Reset this value to its initial (empty) state.
-     */
-    void clear();
+     /**
+      * Clear this component to its initial state.
+      *
+      * @ensures <pre>this = #this</pre> (empty representation)
+      */
+     void clear();
 
-    /**
-     * Transfer resources from {@code source} into this object. The source is
-     * left in a valid empty state.
-     *
-     * @param source
-     *            the source object
-     */
-    void transferFrom(T source);
+     /**
+      * Move data from source to this.
+      *
+      * @param source
+      *             non-null source component
+      * @requires source != null
+      * @ensures this = #source
+      * @clears source
+      */
+     void transferFrom(T source);
 
-    /**
-     * Create and return a new instance of this type.
-     *
-     * @return a new instance
-     */
-    T newInstance();
-
+     /**
+      * Create a new, empty instance of the same implementation.
+      *
+      * @return new component instance
+      * @ensures <pre>result is fresh, empty</pre>
+      */
+     T newInstance();
 }

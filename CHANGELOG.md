@@ -25,6 +25,12 @@ the following form: YYYY.0M.0D.
 - Added `MediaTrackerKernel`, `MediaTracker`, and `MediaTracker1L` to complete component stack
 - Implemented secondary methods (`containsSeries`, `markCompleted`, `countByStatus`, `countByType`, `generateSummaryReport`) and common methods (`toString`, `equals`, `hashCode`)
 
+## 2026.04.03
+
+### Added
+
+- Implemented kernel, secondary, and enhanced classes for `MediaTracker` component: `MediaTrackerKernel`, `MediaTracker`, `MediaTrackerSecondary`, `MediaTracker1L`, and `Standard`
+
 ## 2026.02.06
 
 ### Added
