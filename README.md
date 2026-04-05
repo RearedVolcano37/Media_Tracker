@@ -10,8 +10,8 @@ It is designed as a course-style Java component with interface-driven behavior a
 
 ## Project Layout
 
-- `src/` - main component implementation
-- `test/` - unit tests
+- `src/main/java/` - main component implementation
+- `src/test/java/` - unit tests
 - `samples/` - example applications
 - `doc/` - development notes and design documents
 
