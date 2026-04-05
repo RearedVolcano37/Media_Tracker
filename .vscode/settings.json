@@ -16,8 +16,8 @@
     "java.format.settings.url": ".vscode/osu-cse-formatter.xml",
     "java.format.settings.profile": "OSU CSE",
     "java.project.sourcePaths": [
-        "src",
-        "test",
+        "src/main/java",
+        "src/test/java",
         "samples"
     ],
     "java.project.outputPath": "bin",
