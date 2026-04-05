@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import components.mediatracker.MediaTrackerKernel.MediaType;
+import components.mediatracker.MediaTrackerKernel.Status;
+
 class MediaTrackerTest {
 
     @Test
@@ -73,20 +76,23 @@ class MediaTrackerTest {
         MediaTracker tracker = new MediaTracker1L();
         tracker.addSeries("Naruto", MediaType.ANIME);
 
-        assertThrows(IllegalStateException.class, () -> tracker.addSeries("Naruto", MediaType.ANIME));
+        assertThrows(IllegalStateException.class,
+                () -> tracker.addSeries("Naruto", MediaType.ANIME));
     }
 
     @Test
     void testRemoveNonExistentThrows() {
         MediaTracker tracker = new MediaTracker1L();
 
-        assertThrows(IllegalArgumentException.class, () -> tracker.removeSeries("Naruto"));
+        assertThrows(IllegalArgumentException.class,
+                () -> tracker.removeSeries("Naruto"));
     }
 
     @Test
     void testGetProgressNonExistentThrows() {
         MediaTracker tracker = new MediaTracker1L();
 
-        assertThrows(IllegalArgumentException.class, () -> tracker.getProgress("Naruto"));
+        assertThrows(IllegalArgumentException.class,
+                () -> tracker.getProgress("Naruto"));
     }
 }
