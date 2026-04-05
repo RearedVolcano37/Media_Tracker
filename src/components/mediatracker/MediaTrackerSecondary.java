@@ -39,6 +39,7 @@ public abstract class MediaTrackerSecondary implements MediaTracker {
         return this.getType(this.indexOf(title));
     }
 
+    @Override
     public int getProgress(String title) {
         this.checkExists(title);
         return this.getProgress(this.indexOf(title));

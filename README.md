@@ -106,6 +106,7 @@ See the `samples/` directory for example applications:
 Comprehensive unit tests are provided in `test/components/mediatracker/MediaTrackerTest.java`.
 
 Run tests with:
+
 ```bash
 java -cp "src;test" components.mediatracker.MediaTrackerTest
 ```
@@ -132,7 +133,7 @@ you put here by default, so don't worry about committing it to version control.
 Similarly, you will need the testing APIs (e.g., JUnit). Perhaps the easiest way
 to include them in your project is to click the beaker symbol in the left
 sidebar; it's right below the extensions button which looks like four squares.
-If you do not see this button, try creating a Java file in `src`. From there, 
+If you do not see this button, try creating a Java file in `src`. From there,
 you can click "Enable Java Tests" and then click "JUnit" from the
 dropdown. That's it! You should now see the two JUnit libraries in the lib
 folder.
@@ -156,4 +157,3 @@ for each assignment file.
 
 [components-jar]: https://cse22x1.engineering.osu.edu/common/components.jar
 [jdk-downloads]: https://www.oracle.com/java/technologies/downloads/
-[use-this-template]: https://github.com/new?template_name=portfolio-project&template_owner=jrg94

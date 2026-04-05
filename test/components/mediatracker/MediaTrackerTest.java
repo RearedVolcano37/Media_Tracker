@@ -1,7 +1,7 @@
 package components.mediatracker;
 
-import static components.mediatracker.MediaTrackerKernel.MediaType;
-import static components.mediatracker.MediaTrackerKernel.Status;
+import components.mediatracker.MediaTrackerKernel.MediaType;
+import components.mediatracker.MediaTrackerKernel.Status;
 
 /**
  * Test class for MediaTracker.

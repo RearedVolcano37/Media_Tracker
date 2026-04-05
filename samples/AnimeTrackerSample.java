@@ -1,10 +1,11 @@
-import components.mediatracker.*;
-import static components.mediatracker.MediaTrackerKernel.MediaType;
-import static components.mediatracker.MediaTrackerKernel.Status;
+import components.mediatracker.MediaTracker;
+import components.mediatracker.MediaTracker1L;
+import components.mediatracker.MediaTrackerKernel.MediaType;
+import components.mediatracker.MediaTrackerKernel.Status;
 
 /**
- * Sample 1: Simple Anime Tracker
- * Demonstrates basic usage of MediaTracker for tracking anime series.
+ * Sample 1: Simple Anime Tracker Demonstrates basic usage of MediaTracker for
+ * tracking anime series.
  */
 public class AnimeTrackerSample {
 
@@ -30,7 +31,9 @@ public class AnimeTrackerSample {
         System.out.println(tracker.generateSummaryReport());
 
         // Count by status
-        System.out.println("In Progress: " + tracker.countByStatus(Status.IN_PROGRESS));
-        System.out.println("Completed: " + tracker.countByStatus(Status.COMPLETED));
+        System.out.println(
+                "In Progress: " + tracker.countByStatus(Status.IN_PROGRESS));
+        System.out.println(
+                "Completed: " + tracker.countByStatus(Status.COMPLETED));
     }
 }

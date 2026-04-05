@@ -1,10 +1,11 @@
-import components.mediatracker.*;
-import static components.mediatracker.MediaTrackerKernel.MediaType;
-import static components.mediatracker.MediaTrackerKernel.Status;
+import components.mediatracker.MediaTracker;
+import components.mediatracker.MediaTracker1L;
+import components.mediatracker.MediaTrackerKernel.MediaType;
+import components.mediatracker.MediaTrackerKernel.Status;
 
 /**
- * Sample 2: Advanced Manga Tracker
- * Demonstrates advanced usage including different media types and status management.
+ * Sample 2: Advanced Manga Tracker Demonstrates advanced usage including
+ * different media types and status management.
  */
 public class MangaTrackerSample {
 
@@ -33,11 +34,16 @@ public class MangaTrackerSample {
         System.out.println("Media Tracker Summary:");
         System.out.println("Total series: " + tracker.size());
         System.out.println("Manga: " + tracker.countByType(MediaType.MANGA));
-        System.out.println("Webtoons: " + tracker.countByType(MediaType.WEBTOON));
-        System.out.println("Light Novels: " + tracker.countByType(MediaType.LIGHTNOVEL));
-        System.out.println("In Progress: " + tracker.countByStatus(Status.IN_PROGRESS));
-        System.out.println("Completed: " + tracker.countByStatus(Status.COMPLETED));
-        System.out.println("Planning: " + tracker.countByStatus(Status.PLANNING));
+        System.out
+                .println("Webtoons: " + tracker.countByType(MediaType.WEBTOON));
+        System.out.println(
+                "Light Novels: " + tracker.countByType(MediaType.LIGHTNOVEL));
+        System.out.println(
+                "In Progress: " + tracker.countByStatus(Status.IN_PROGRESS));
+        System.out.println(
+                "Completed: " + tracker.countByStatus(Status.COMPLETED));
+        System.out
+                .println("Planning: " + tracker.countByStatus(Status.PLANNING));
 
         // Full report
         System.out.println("\nDetailed Report:");
