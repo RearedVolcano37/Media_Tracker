@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/) of
 the following form: YYYY.0M.0D.
 
+## 2026.04.05
+
+### Added
+
+- Comprehensive unit tests in `test/components/mediatracker/MediaTrackerTest.java`
+- Sample applications: `AnimeTrackerSample.java` and `MangaTrackerSample.java`
+- Maven build configuration (`pom.xml`)
+- Updated README with usage examples and API documentation
+
+### Changed
+
+- Migrated interfaces to use enum-based types (MediaType, Status) instead of strings
+- Updated implementations to be consistent with enum usage
+- Fixed package structure and imports
+
+### Fixed
+
+- Resolved compilation errors and type inconsistencies
+- Aligned kernel and enhanced interfaces
+
 ## 2026.04.03
 
 ### Added

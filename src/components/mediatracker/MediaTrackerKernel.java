@@ -1,109 +1,139 @@
 package components.mediatracker;
 
+import components.mediatracker.Standard;
+
 /**
- * Kernel interface for the MediaTracker component.
+ * MediaTrackerKernel interface.
+ *
+ * Kernel interface for a MediaTracker component that tracks progress and status
+ * of different media series.
  */
 public interface MediaTrackerKernel extends Standard<MediaTracker> {
 
     /**
-     * Add a new series with a given title and type.
-     *
-     * @param title
-     *            non-null non-empty title
-     * @param type
-     *            non-null non-empty type
-     * @requires title != null && !title.isBlank() && type != null &&
-     *           !type.isBlank()
-     * @requires indexOf(title) < 0
-     * @ensures size() = #size() + 1
+     * Media types supported by the tracker.
      */
-    void addSeries(String title, String type);
+    enum MediaType {
+        MANGA, MANHUA, WEBTOON, ANIME, LIGHTNOVEL
+    }
 
     /**
-     * Remove a series by title.
+     * Status of a media series.
+     */
+    enum Status {
+        PLANNING, IN_PROGRESS, COMPLETED, DROPPED
+    }
+
+    /**
+     * Adds a new series to the tracker.
      *
      * @param title
-     *            non-null non-empty existing title
-     * @requires title != null && !title.isBlank() && indexOf(title) >= 0
-     * @ensures size() = #size() - 1
+     *            the title of the series
+     * @param type
+     *            the type of media
+     * @updates this
+     * @requires title is not already in this
+     * @ensures title is added to this
+     */
+    void addSeries(String title, MediaType type);
+
+    /**
+     * Removes a series from the tracker.
+     *
+     * @param title
+     *            the title of the series
+     * @updates this
+     * @requires title is in this
+     * @ensures title is removed from this
      */
     void removeSeries(String title);
 
     /**
-     * Set progress for a series.
+     * Updates the progress of a series.
      *
      * @param title
-     *            non-null non-empty existing title
+     *            the title of the series
      * @param progress
-     *            non-negative progress value
-     * @requires title != null && !title.isBlank() && indexOf(title) >= 0 &&
-     *           progress >= 0
-     * @ensures getSeriesProgress(title) = progress
+     *            the progress value
+     * @updates this
+     * @requires title is in this
+     * @ensures progress of title is updated
      */
     void updateProgress(String title, int progress);
 
     /**
-     * Set status for a series.
+     * Sets the status of a series.
      *
      * @param title
-     *            non-null non-empty existing title
+     *            the title of the series
      * @param status
-     *            non-null non-empty status
-     * @requires title != null && !title.isBlank() && indexOf(title) >= 0 &&
-     *           status != null && !status.isBlank()
-     * @ensures getSeriesStatus(title).equals(status)
+     *            the new status
+     * @updates this
+     * @requires title is in this
+     * @ensures status of title is updated
      */
-    void setStatus(String title, String status);
+    void setStatus(String title, Status status);
 
     /**
-     * Number of series in tracker.
+     * Returns the number of series tracked.
      *
-     * @return non-negative count
+     * @return number of series
+     * @ensures size = number of series in this
      */
     int size();
 
     /**
-     * Find index of series or -1.
+     * Returns the index of a series by title.
      *
      * @param title
-     *            non-null non-empty title
-     * @return index of title or -1 if missing
+     *            the title
+     * @return index or -1 if not found
+     * @ensures indexOf = index of title or -1
      */
     int indexOf(String title);
 
     /**
-     * Get the title of the series at index.
+     * Gets the title at an index.
      *
      * @param index
-     *            valid index
+     *            the index
      * @return title
+     * @requires 0 <= index < size()
+     * @ensures getTitle = title at index
      */
     String getTitle(int index);
 
     /**
-     * Get the type of the series at index.
+     * Gets the type at an index.
      *
      * @param index
-     *            valid index
+     *            the index
      * @return type
+     * @requires 0 <= index < size()
+     * @ensures getType = type at index
      */
     String getType(int index);
 
     /**
-     * Get the progress of the series at index.
+     * Gets the progress at an index.
      *
      * @param index
-     *            valid index
+     *            the index
      * @return progress
+     * @requires 0 <= index < size()
+     * @ensures getProgress = progress at index
      */
     int getProgress(int index);
 
     /**
-     * Get the status of the series at index.
+     * Gets the status at an index.
      *
      * @param index
-     *            valid index
+     *            the index
      * @return status
+     * @requires 0 <= index < size()
+     * @ensures getStatus = status at index
      */
     String getStatus(int index);
+
 }

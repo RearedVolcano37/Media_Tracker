@@ -1,53 +1,122 @@
-# Portfolio Project
+# MediaTracker Component
 
-The purpose of this repo is to provide a framework for creating your own
-component in the software sequence discipline. If you were unsure whether
-or not to make your own, consider the following testimonial:
+A Java component for tracking progress and status of various media series including manga, anime, webtoons, and light novels.
 
-> I really enjoyed the portfolio project! It gave me a stronger understanding
-> of the OSU software discipline while also giving me the flexibility to
-> design something that reflected my interests. This made the experience
-> rewarding and enjoyable as I created a product I was proud of!
+## Overview
 
-## Recommended Steps to Get Started
+The MediaTracker component provides a comprehensive framework for managing collections of media series. It supports multiple media types and tracking statuses, allowing users to monitor their reading/watching progress.
 
-When starting your portfolio project, the following steps should make your life
-a bit easier.
+## Features
 
-### Step 1: Create a Repo From This Template
+- Track multiple media types: MANGA, MANHUA, WEBTOON, ANIME, LIGHTNOVEL
+- Status management: PLANNING, IN_PROGRESS, COMPLETED, DROPPED
+- Progress tracking with integer values
+- Summary reports and statistics
+- Type-safe enum-based API
 
-<!-- TODO: use GitHub to create a repo from this template -->
+## Architecture
 
-Assuming you're reading this README from GitHub, you can make use of this
-repo by clicking the `Use this template` button in the top-right corner of
-this page. If you can't find the button, [this link][use-this-template] 
-should work as well. Personally, I would recommend using the 
-`Create a new repository` option, which will allow you to name the 
-repository after your component. Given that you will be submitting pull 
-requests to me through Carmen, you'll want to make sure your repository 
-is public. Then, you can click `Create repository`. After that, you can 
-go through all the usual steps of cloning a repository on your system to 
-get to work. I use GitHub Desktop to clone projects, and it has a nice 
-feature of letting you open a repo directly in VSCode from the 
-`Repository` menu.
+The component follows the OSU software components pattern with:
 
-### Step 2: Install Recommended Plugins
+- **MediaTrackerKernel**: Low-level kernel interface with basic operations
+- **MediaTracker**: Enhanced interface with secondary methods
+- **MediaTrackerSecondary**: Abstract implementation providing common functionality
+- **MediaTracker1L**: Concrete implementation using list-based representation
 
-<!-- TODO: install recommended plugins and delete this comment -->
+## Usage
 
-When you open VSCode with this project, you should get a notification in the
-bottom right corner that there are some recommended extensions to install.
-Click install all. If you ignored this message or it never came up, feel free
-to press CTRL+SHIFT+P and type "Show Recommended Extensions". Install all of the
-extensions listed.
+```java
+import components.mediatracker.*;
+import static components.mediatracker.MediaTrackerKernel.MediaType;
+import static components.mediatracker.MediaTrackerKernel.Status;
 
-### Step 3: Install the Latest JDK
+MediaTracker tracker = new MediaTracker1L();
 
-<!-- TODO: install latest JDK and delete this comment -->
+// Add a series
+tracker.addSeries("Berserk", MediaType.MANGA);
 
-If you do not have an available JDK on your system, you may be prompted to
-install one by VSCode. The default seems to be Red Hat's OpenJDK, which seems to
-require you to register for an account or to install on the command line.
+// Update progress and status
+tracker.updateProgress("Berserk", 350);
+tracker.setStatus("Berserk", Status.IN_PROGRESS);
+
+// Generate reports
+System.out.println(tracker.generateSummaryReport());
+System.out.println("Manga count: " + tracker.countByType(MediaType.MANGA));
+```
+
+## Building and Testing
+
+### Prerequisites
+
+- Java 11 or higher
+- Maven (for dependency management)
+
+### Build
+
+```bash
+mvn compile
+```
+
+### Test
+
+```bash
+mvn test
+```
+
+### Run Samples
+
+```bash
+# Compile samples
+javac -cp "target/classes" samples/*.java
+
+# Run anime sample
+java -cp "target/classes:samples" AnimeTrackerSample
+
+# Run manga sample
+java -cp "target/classes:samples" MangaTrackerSample
+```
+
+## API Documentation
+
+### MediaTrackerKernel
+
+- `addSeries(String title, MediaType type)` - Add a new series
+- `removeSeries(String title)` - Remove a series
+- `updateProgress(String title, int progress)` - Update reading/watching progress
+- `setStatus(String title, Status status)` - Set series status
+- `size()` - Get number of tracked series
+
+### MediaTracker (extends MediaTrackerKernel)
+
+- `containsSeries(String title)` - Check if series exists
+- `getProgress(String title)` - Get progress for a series
+- `countByStatus(Status status)` - Count series by status
+- `countByType(MediaType type)` - Count series by type
+- `generateSummaryReport()` - Generate formatted report
+
+## Samples
+
+See the `samples/` directory for example applications:
+
+- `AnimeTrackerSample.java` - Basic anime tracking
+- `MangaTrackerSample.java` - Advanced multi-media tracking
+
+## Testing
+
+Comprehensive unit tests are provided in `test/components/mediatracker/MediaTrackerTest.java`.
+
+Run tests with:
+```bash
+java -cp "src;test" components.mediatracker.MediaTrackerTest
+```
+
+## Contributing
+
+This is a portfolio project for OSU CSE 2221. For questions or feedback, please contact the author.
+
+## License
+
+See LICENSE file for details.
 Regardless, there is no mac support. As a result, I would just recommend
 installing the latest JDK [directly from Oracle's site][jdk-downloads].
 

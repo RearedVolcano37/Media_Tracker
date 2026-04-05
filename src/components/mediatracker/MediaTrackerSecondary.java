@@ -34,38 +34,34 @@ public abstract class MediaTrackerSecondary implements MediaTracker {
         return this.indexOf(title) >= 0;
     }
 
-    @Override
     public String getSeriesType(String title) {
         this.checkExists(title);
         return this.getType(this.indexOf(title));
     }
 
-    @Override
-    public int getSeriesProgress(String title) {
+    public int getProgress(String title) {
         this.checkExists(title);
         return this.getProgress(this.indexOf(title));
     }
 
-    @Override
     public String getSeriesStatus(String title) {
         this.checkExists(title);
         return this.getStatus(this.indexOf(title));
     }
 
-    @Override
     public void markCompleted(String title) {
         this.checkExists(title);
-        this.setStatus(title, "Completed");
+        this.setStatus(title, Status.COMPLETED);
     }
 
     @Override
-    public int countByStatus(String status) {
+    public int countByStatus(Status status) {
         if (status == null) {
             throw new IllegalArgumentException("status cannot be null");
         }
         int count = 0;
         for (int i = 0; i < this.size(); i++) {
-            if (status.equals(this.getStatus(i))) {
+            if (status.toString().equals(this.getStatus(i))) {
                 count++;
             }
         }
@@ -73,13 +69,13 @@ public abstract class MediaTrackerSecondary implements MediaTracker {
     }
 
     @Override
-    public int countByType(String type) {
+    public int countByType(MediaType type) {
         if (type == null) {
             throw new IllegalArgumentException("type cannot be null");
         }
         int count = 0;
         for (int i = 0; i < this.size(); i++) {
-            if (type.equals(this.getType(i))) {
+            if (type.toString().equals(this.getType(i))) {
                 count++;
             }
         }

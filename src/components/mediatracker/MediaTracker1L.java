@@ -29,12 +29,12 @@ public class MediaTracker1L extends MediaTrackerSecondary {
     }
 
     @Override
-    public void addSeries(String title, String type) {
+    public void addSeries(String title, MediaType type) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("title cannot be null or empty");
         }
-        if (type == null || type.isBlank()) {
-            throw new IllegalArgumentException("type cannot be null or empty");
+        if (type == null) {
+            throw new IllegalArgumentException("type cannot be null");
         }
         if (this.indexOf(title) >= 0) {
             throw new IllegalStateException("Series already exists: " + title);
@@ -64,10 +64,9 @@ public class MediaTracker1L extends MediaTrackerSecondary {
     }
 
     @Override
-    public void setStatus(String title, String status) {
-        if (status == null || status.isBlank()) {
-            throw new IllegalArgumentException(
-                    "status cannot be null or empty");
+    public void setStatus(String title, Status status) {
+        if (status == null) {
+            throw new IllegalArgumentException("status cannot be null");
         }
         int index = this.indexOf(title);
         if (index < 0) {
@@ -103,7 +102,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
     @Override
     public String getType(int index) {
         this.checkIndex(index);
-        return this.entries.get(index).type;
+        return this.entries.get(index).type.toString();
     }
 
     @Override
@@ -115,7 +114,7 @@ public class MediaTracker1L extends MediaTrackerSecondary {
     @Override
     public String getStatus(int index) {
         this.checkIndex(index);
-        return this.entries.get(index).status;
+        return this.entries.get(index).status.toString();
     }
 
     @Override
@@ -148,15 +147,15 @@ public class MediaTracker1L extends MediaTrackerSecondary {
 
     private static final class SeriesEntry {
         final String title;
-        final String type;
+        final MediaType type;
         int progress;
-        String status;
+        Status status;
 
-        SeriesEntry(String title, String type) {
+        SeriesEntry(String title, MediaType type) {
             this.title = title;
             this.type = type;
             this.progress = 0;
-            this.status = "Planning";
+            this.status = Status.PLANNING;
         }
     }
 }
