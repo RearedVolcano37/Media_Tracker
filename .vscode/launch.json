@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Run AnimeTrackerSample",
+            "request": "launch",
+            "mainClass": "AnimeTrackerSample",
+            "projectName": "Media_Tracker"
+        },
+        {
+            "type": "java",
+            "name": "Run MangaTrackerSample",
+            "request": "launch",
+            "mainClass": "MangaTrackerSample",
+            "projectName": "Media_Tracker"
+        }
+    ]
+}

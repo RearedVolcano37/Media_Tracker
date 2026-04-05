@@ -6,6 +6,9 @@ import components.mediatracker.MediaTrackerKernel.Status;
 /**
  * Sample 2: Advanced Manga Tracker Demonstrates advanced usage including
  * different media types and status management.
+ *
+ * Might have to run this in order to run properly javac -cp "src"
+ * samples\MangaTrackerSample.java java -cp "src;samples" MangaTrackerSample
  */
 public class MangaTrackerSample {
 
