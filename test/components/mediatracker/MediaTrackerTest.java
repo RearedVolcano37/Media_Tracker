@@ -1,106 +1,92 @@
 package components.mediatracker;
 
-import components.mediatracker.MediaTrackerKernel.MediaType;
-import components.mediatracker.MediaTrackerKernel.Status;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Test class for MediaTracker.
- */
-public class MediaTrackerTest {
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) {
-        testAddSeries();
-        testRemoveSeries();
-        testUpdateProgress();
-        testSetStatus();
-        testCountByType();
-        testGenerateSummaryReport();
-        testAddDuplicateSeries();
-        testRemoveNonExistent();
-        testGetProgressNonExistent();
-        System.out.println("All tests passed!");
+class MediaTrackerTest {
+
+    @Test
+    void testAddSeries() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+
+        assertEquals(1, tracker.size());
+        assertTrue(tracker.containsSeries("Naruto"));
     }
 
-    public static void testAddSeries() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        assertTrue(mt.size() == 1);
-        assertTrue(mt.containsSeries("Naruto"));
+    @Test
+    void testRemoveSeries() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+        tracker.removeSeries("Naruto");
+
+        assertEquals(0, tracker.size());
+        assertFalse(tracker.containsSeries("Naruto"));
     }
 
-    public static void testRemoveSeries() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        mt.removeSeries("Naruto");
-        assertTrue(mt.size() == 0);
-        assertTrue(!mt.containsSeries("Naruto"));
+    @Test
+    void testUpdateProgress() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+        tracker.updateProgress("Naruto", 50);
+
+        assertEquals(50, tracker.getProgress("Naruto"));
     }
 
-    public static void testUpdateProgress() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        mt.updateProgress("Naruto", 50);
-        assertTrue(mt.getProgress("Naruto") == 50);
+    @Test
+    void testSetStatus() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+        tracker.setStatus("Naruto", Status.IN_PROGRESS);
+
+        assertEquals(1, tracker.countByStatus(Status.IN_PROGRESS));
     }
 
-    public static void testSetStatus() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        mt.setStatus("Naruto", Status.IN_PROGRESS);
-        assertTrue(mt.countByStatus(Status.IN_PROGRESS) == 1);
+    @Test
+    void testCountByType() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+        tracker.addSeries("One Piece", MediaType.ANIME);
+        tracker.addSeries("Berserk", MediaType.MANGA);
+
+        assertEquals(2, tracker.countByType(MediaType.ANIME));
+        assertEquals(1, tracker.countByType(MediaType.MANGA));
     }
 
-    public static void testCountByType() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        mt.addSeries("One Piece", MediaType.ANIME);
-        mt.addSeries("Berserk", MediaType.MANGA);
-        assertTrue(mt.countByType(MediaType.ANIME) == 2);
-        assertTrue(mt.countByType(MediaType.MANGA) == 1);
-    }
+    @Test
+    void testGenerateSummaryReport() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
 
-    public static void testGenerateSummaryReport() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        String report = mt.generateSummaryReport();
+        String report = tracker.generateSummaryReport();
+
         assertTrue(report.contains("Naruto"));
         assertTrue(report.contains("ANIME"));
     }
 
-    public static void testAddDuplicateSeries() {
-        MediaTracker mt = new MediaTracker1L();
-        mt.addSeries("Naruto", MediaType.ANIME);
-        try {
-            mt.addSeries("Naruto", MediaType.ANIME);
-            assertTrue(false);
-        } catch (IllegalStateException e) {
-            // expected
-        }
+    @Test
+    void testAddDuplicateSeriesThrows() {
+        MediaTracker tracker = new MediaTracker1L();
+        tracker.addSeries("Naruto", MediaType.ANIME);
+
+        assertThrows(IllegalStateException.class, () -> tracker.addSeries("Naruto", MediaType.ANIME));
     }
 
-    public static void testRemoveNonExistent() {
-        MediaTracker mt = new MediaTracker1L();
-        try {
-            mt.removeSeries("Naruto");
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-            // expected
-        }
+    @Test
+    void testRemoveNonExistentThrows() {
+        MediaTracker tracker = new MediaTracker1L();
+
+        assertThrows(IllegalArgumentException.class, () -> tracker.removeSeries("Naruto"));
     }
 
-    public static void testGetProgressNonExistent() {
-        MediaTracker mt = new MediaTracker1L();
-        try {
-            mt.getProgress("Naruto");
-            assertTrue(false);
-        } catch (IllegalArgumentException e) {
-            // expected
-        }
-    }
+    @Test
+    void testGetProgressNonExistentThrows() {
+        MediaTracker tracker = new MediaTracker1L();
 
-    private static void assertTrue(boolean condition) {
-        if (!condition) {
-            throw new AssertionError();
-        }
+        assertThrows(IllegalArgumentException.class, () -> tracker.getProgress("Naruto"));
     }
 }
