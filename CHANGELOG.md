@@ -17,6 +17,14 @@ the following form: YYYY.0M.0D.
 
 - Refined MediaTracker design after proof-of-concept implementation
 
+## 2026.04.01
+
+### Added
+
+- Implemented `MediaTrackerSecondary` abstract class in `src/components/mediatracker`
+- Added `MediaTrackerKernel`, `MediaTracker`, and `MediaTracker1L` to complete component stack
+- Implemented secondary methods (`containsSeries`, `markCompleted`, `countByStatus`, `countByType`, `generateSummaryReport`) and common methods (`toString`, `equals`, `hashCode`)
+
 ## 2026.02.06
 
 ### Added
