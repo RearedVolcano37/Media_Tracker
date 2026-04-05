@@ -15,15 +15,6 @@
     "java.checkstyle.configuration": ".vscode/osu-cse-checkstyle-config.xml",
     "java.format.settings.url": ".vscode/osu-cse-formatter.xml",
     "java.format.settings.profile": "OSU CSE",
-    "java.project.sourcePaths": [
-        "src/main/java",
-        "src/test/java",
-        "samples"
-    ],
-    "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ],
     "java.saveActions.cleanup": true,
     "java.cleanup.actions": [
         "qualifyMembers",
@@ -42,5 +33,6 @@
     "print.sourcecode.colourScheme": "A11 Y",
     "todo-tree.general.showActivityBarBadge": true,
     "todo-tree.tree.showCountsInTree": true,
-    "java.configuration.updateBuildConfiguration": "interactive",
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.debug.settings.onBuildFailureProceed": true,
 }
