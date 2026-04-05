@@ -1,3 +1,5 @@
+package samples;
+
 import components.mediatracker.MediaTracker;
 import components.mediatracker.MediaTracker1L;
 import components.mediatracker.MediaTrackerKernel.MediaType;

@@ -52,7 +52,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>samples</source>
+                                <source>src/samples</source>
                             </sources>
                         </configuration>
                     </execution>
