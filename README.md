@@ -56,6 +56,34 @@ The component follows a simple OSU CSE style:
 - `MediaTrackerSecondary` centralizes common code
 - `MediaTracker1L` provides a concrete list-based implementation
 
+## Use Cases
+
+The MediaTracker component is designed to track progress and status of various media series. Two qualitatively different use cases are provided:
+
+### 1. Anime Tracking (Simple Use Case)
+
+The `AnimeTrackerSample` demonstrates basic usage for tracking anime series. It shows adding series, updating progress, setting statuses, and generating reports. This use case focuses on a single media type (anime) and basic operations, suitable for users who want straightforward tracking.
+
+### 2. Multi-Media Library (Advanced Use Case)
+
+The `MangaTrackerSample` showcases advanced features including multiple media types (manga, webtoons, light novels) and comprehensive status management. It demonstrates counting by type and status, making it ideal for users managing diverse media collections with different completion states.
+
+Both samples illustrate the component's flexibility for different user needs, from simple personal tracking to complex library management.
+
+## Testing
+
+The component includes comprehensive unit tests in `MediaTrackerTest.java` that cover:
+
+- All kernel methods: addSeries, removeSeries, updateProgress, setStatus, size, indexOf, getTitle, getType, getStatus, getProgressValue, generateSummaryReport
+- All secondary methods: containsSeries, getProgress, countByStatus, countByType
+- All media types: MANGA, MANHUA, WEBTOON, ANIME, LIGHTNOVEL
+- All statuses: PLANNING, IN_PROGRESS, COMPLETED, DROPPED
+- Edge cases: empty tracker, duplicate additions, non-existent operations
+- Exception handling: IllegalStateException for duplicates, IllegalArgumentException for invalid operations
+- Multiple operations and state consistency
+
+Run tests with `mvn clean test` to ensure all functionality works correctly.
+
 ## Notes
 
 - This project is self-contained and does not require external JARs in `lib/`.
